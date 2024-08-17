@@ -64,7 +64,7 @@ base.minsize(width=275,height=440)
 base.title("Calculator")
 
 
-# base.wm_iconbitmap("calculator_icon.ico")
+base.wm_iconbitmap("calculator_icon.ico")
 
 input_value = StringVar()
 input_value.set("")
