@@ -1,5 +1,5 @@
 
-# Python calculator
+# Python calculator GUI by Kalmux
 
 from tkinter import *
 
@@ -9,18 +9,43 @@ from tkinter import *
 def click(event):
     global input_value
     action = event.widget.cget("text")
-    print(action)
     
     if action == "=":
-        pass
-    elif action == "+":
-        pass
-    elif action == "-":
-        pass
-    elif action == "X":
-        pass
-    elif action == "/":
-        pass
+        try:
+            if input_value.get().isdigit():
+                sol = int(input_value.get())
+            else:
+                sol = eval(input_value.get())
+
+            input_value.set(sol)
+        except Exception:
+            input_value.set("Error")
+
+        input_screen.update()
+
+
+    elif action == "x²":
+        try:
+            curent = float(input_value.get())
+            sol = curent ** 2
+            input_value.set(sol)
+        except Exception:
+            input_value.set("Error")
+
+        input_screen.update()
+
+
+    elif action == "x³":
+        try:
+            curent = float(input_value.get())
+            sol = curent ** 3
+            input_value.set(sol)
+        except Exception:
+            input_value.set("Error")
+
+        input_screen.update()
+
+
     elif action == "C":
         input_value.set("")
         input_screen.update()
@@ -33,8 +58,8 @@ def click(event):
 base = Tk()
 
 base.geometry("275x440")
-# base.maxsize(width=310,height=505)
-# base.minsize(width=310,height=505)
+base.maxsize(width=275,height=440)
+base.minsize(width=275,height=440)
 
 base.title("Calculator")
 
@@ -115,9 +140,9 @@ badd = Button(button_frame, text="+",font="Digital-7 25 bold",padx=4)
 badd.grid(row=4,column=3,pady=1)
 badd.bind("<Button-1>",click)
 
-bper = Button(button_frame, text="%",font="Digital-7 25 bold",padx=5)
-bper.grid(row=5,column=0,padx=1,pady=1)
-bper.bind("<Button-1>",click)
+b00 = Button(button_frame, text="00",font="Digital-7 25 bold",padx=1)
+b00.grid(row=5,column=0,padx=1,pady=1)
+b00.bind("<Button-1>",click)
 
 b0 = Button(button_frame, text="0",font="Digital-7 25 bold",padx=10)
 b0.grid(row=5,column=1,padx=1,pady=1)
@@ -125,7 +150,7 @@ b0.bind("<Button-1>",click)
 
 bdot = Button(button_frame, text=".",font="Digital-7 25 bold",padx=15)
 bdot.grid(row=5,column=2,padx=1,pady=1)
-bdot.bind("<Button-1>",click)
+bdot.bind("<Button-1>",click) 
 
 beq = Button(button_frame, text="=",font="Digital-7 25 bold",padx=4,bg="lightblue")
 beq.grid(row=5,column=3,pady=1)
